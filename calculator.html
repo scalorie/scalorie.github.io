@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SCALORIE - TDEE Calculator</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/w3.css">
+    <link rel="stylesheet" href="css/custom.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-red.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css">
+    <script type="text/javascript" src="js/common.js"></script>
+    <script type="text/javascript" src="js/jquery-3.6.0.min.js"></script>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-X0JENR67T6"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-X0JENR67T6');
+    </script>
+</head>
+<body onload="loadLangage()">
+
+    <!-- Side Navigation -->
+    <div class="w3-top w3-white">
+        <div class="w3-bar w3-left-align w3-large">
+            <a class="w3-bar-item w3-hide-medium w3-hide-large w3-right w3-padding-large w3-large w3-text-red" href="javascript:void(0);" onclick="navShowHide()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
+            <a href="index.htm"><img src="images/image-logo.png" class="w3-padding" style="height: 50px;" /></a>
+            <a href="javascript:setLanguage('tc');" class="w3-bar-item w3-right w3-hide-small w3-padding-large" style="padding-left: 10px!important;" data-tag="menu.tc">中</a>
+            <span class="w3-bar-item w3-right w3-hide-small w3-padding-large" style="padding-left: 0px !important; padding-right: 0px !important; "> | </span>
+            <a href="javascript:setLanguage('en')" class="w3-bar-item w3-right w3-hide-small w3-padding-large" style="padding-right: 10px!important;" data-tag="menu.en">EN</a>
+            <a href="partnership.htm" class="w3-bar-item w3-right w3-hide-small w3-padding-large" data-tag="menu.partnership">Partnership</a>
+            <a href="https://info.scalorie.co/" target="_blank" class="w3-bar-item w3-right w3-hide-small w3-padding-large" data-tag="menu.blog">Blog</a>
+            <a href="foodlibrary.htm" class="w3-bar-item w3-right w3-hide-small w3-padding-large" data-tag="menu.nutrition_facts">Food Library</a>
+            <a href="calculator.htm" class="w3-bar-item w3-right w3-hide-small w3-padding-large" data-tag="menu.tdee_calculator">TDEE Calculator</a>
+            <a href="index.htm" class="w3-bar-item w3-right w3-hide-small w3-padding-large" data-tag="menu.why">Why Scalorie</a>
+        </div>
+
+        <!-- Navbar on small screens -->
+        <div id="navDemo" class="w3-bar-block w3-white w3-hide w3-hide-large w3-hide-medium w3-large">
+            <a href="index.htm" class="w3-bar-item w3-button w3-padding-large" data-tag="menu.why">Why Scalorie</a>
+            <a href="calculator.htm" class="w3-bar-item w3-button w3-padding-large" data-tag="menu.tdee_calculator">TDEE Calculator</a>
+            <a href="foodlibrary.htm" class="w3-bar-item w3-button w3-padding-large" data-tag="menu.nutrition_facts">Food Library</a>
+            <a href="https://info.scalorie.co/" target="_blank" class="w3-bar-item w3-button w3-padding-large" data-tag="menu.blog">Blog</a>
+            <a href="partnership.htm" class="w3-bar-item w3-button w3-padding-large" data-tag="menu.partnership">Partnership</a>
+            <a href="javascript:setLanguage('en');" class="w3-button w3-padding-large" style="padding-right: 10px!important;" data-tag="menu.en">EN</a>
+            <span class="w3-button w3-padding-large" style="padding-left: 0px !important; padding-right: 0px !important; "> | </span>
+            <a href="javascript:setLanguage('tc');" class="w3-button w3-padding-large" style="padding-left: 10px!important;" data-tag="menu.tc">中</a>
+            <br />
+            <a href="https://instagram.com/scalorie.food?utm_medium=copy_link" target="_blank" class="w3-button w3-padding-large" style="padding-right: 10px!important;"><i class="fa fa-instagram w3-hover-opacity"></i></a>
+            <a href="https://www.facebook.com/scalorie.food" target="_blank" class="w3-button w3-padding-large" style="padding-left: 10px!important;"><i class="fa fa-facebook-official w3-hover-opacity"></i></a>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="w3-container w3-padding" id="myHeader">
+    </header>
+
+    <div id="divInput">
+        <!-- Title -->
+        <div class="w3-row w3-padding-32 myMargin">
+            <h3 style="margin: 30px 0px 0px 0px;"><span data-tag="calc.input.step1">Step 1 </span><span class="w3-xlarge" style="color: #6D7C84;">/ 2</span></h3>
+            <h1 class="w3-xxxlarge" style="line-height: 1; margin: 0px;"><span data-tag="calc.input.title">Start by finding your</span> <span class="w3-text-red">TDEE</span></h1>
+        </div>
+
+        <!-- Calculator Input -->
+        <div class="w3-row w3-padding-32 myMargin">
+            <div class="w3-container w3-auto myHalf">
+                <form>
+                    <div class="w3-section w3-row">
+                        <label data-tag="calc.input.gender">Gender</label>
+                        <div class="">
+                            <input type="hidden" name="cmbGender" id="cmbGender" />
+                            <div class="w3-half w3-padding"><div class="w3-col w3-button w3-border-cal w3-hover-pale-red w3-round" id="btnMale" data-tag="calc.input.gender.male">Male</div></div>
+                            <div class="w3-half w3-padding"><div class="w3-col w3-button w3-border-cal w3-hover-pale-red w3-round" id="btnFemale" data-tag="calc.input.gender.female">Female</div></div>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="w3-section w3-row">
+                        <label class="w3-third" data-tag="calc.input.age">Age</label>
+                        <input class="w3-border-0 w3-text-red" type="number" id="txtAge" value="18" required>
+                        <div class="slidecontainer">
+                            <input type="range" min="1" max="100" value="18" class="slider" id="sldAge">
+                        </div>
+                    </div>
+                    <br />
+                    <div class="w3-section w3-row">
+                        <label class="w3-third" data-tag="calc.input.height">Height</label>
+                        <input class="w3-border-0 w3-text-red" style="width: 50px;" type="number" id="txtHeight" value="170" required> cm
+                        <div class="slidecontainer">
+                            <input type="range" min="1" max="250" value="170" class="slider" id="sldHeight">
+                        </div>
+                    </div>
+                    <br />
+                    <div class="w3-section w3-row">
+                        <label class="w3-third" data-tag="calc.input.weight">Weight</label>
+                        <input class="w3-border-0 w3-text-red" style="width: 50px;" type="number" id="txtWeight" value="50" required> kg
+                        <div class="slidecontainer">
+                            <input type="range" min="1" max="200" value="50" class="slider" id="sldWeight">
+                        </div>
+                    </div>
+                    <br />
+                    <div class="w3-section w3-row">
+                        <label data-tag="calc.input.activity_level">Activity level</label>
+                        <div class="">
+                            <input type="hidden" name="cmbActivity" id="cmbActivity" />
+                            <div class="w3-third w3-padding"><div class="w3-col w3-button w3-border-cal w3-hover-pale-red w3-round" id="btnLight"><p class="w3-large" data-tag="calc.input.activity_level.light">Light</p><span class="w3-small" data-tag="calc.input.activity_level.light.desc">0-2 days/week</span></div></div>
+                            <div class="w3-third w3-padding"><div class="w3-col w3-button w3-border-cal w3-hover-pale-red w3-round" id="btnModerate"><p class="w3-large" data-tag="calc.input.activity_level.moderate">Moderate</p><span class="w3-small" data-tag="calc.input.activity_level.moderate.desc">3-4 days/week</span></div></div>
+                            <div class="w3-third w3-padding"><div class="w3-col w3-button w3-border-cal w3-hover-pale-red w3-round" id="btnHeavy"><p class="w3-large" data-tag="calc.input.activity_level.heavy">Heavy</p><span class="w3-small" data-tag="calc.input.activity_level.heavy.desc">5-7 days/week</span></div></div>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="w3-section w3-row">
+                        <label data-tag="calc.input.objective">Objective</label>
+                        <div class="">
+                            <input type="hidden" name="cmbObjective" id="cmbObjective" />
+                            <div class="w3-third w3-padding"><div class="w3-col w3-button w3-border-cal w3-hover-pale-red w3-round" id="btnKeepFit"><p class="w3-large" data-tag="calc.input.objective.keepfit">Keep fit</p></div></div>
+                            <div class="w3-third w3-padding"><div class="w3-col w3-button w3-border-cal w3-hover-pale-red w3-round" id="btnMaintain"><p class="w3-large" data-tag="calc.input.objective.maintain">Maintain</p></div></div>
+                            <div class="w3-third w3-padding"><div class="w3-col w3-button w3-border-cal w3-hover-pale-red w3-round" id="btnBuildMuscle"><p class="w3-large" data-tag="calc.input.objective.buildmuscle">Build muscle</p></div></div>
+                        </div>
+                    </div>
+                    <br /><br />
+                    <div class="w3-center w3-row">
+                        <button class="w3-padding-all w3-btn w3-large w3-red w3-round-xxlarge" onclick="javascript:TDEE_Calc(); return false;" data-tag="calc.input.seeresult">See my TDEE result</button>
+                    </div>
+                    <br /><br />
+                </form>
+
+                <div class="w3-row w3-card w3-padding-32 w3-center myMargin">
+                    <div class="w3-container w3-auto">
+                        <h3 data-tag="calc.input.how.title">How is TDEE calculated?</h3>
+                        <p data-tag="calc.input.how.description">Total Daily Energy Expenditure (TDEE) is an estimation of how many calories you burn every day, including physical activity. It is calculated by multiplying your Basal Metabolic Rate (BMR) based on your activity level.</p>
+                        <a class="w3-text-red" data-tag="calc.input.how.learnmore">Learn more</a>
+                    </div>
+                </div>
+                <br /><br />
+            </div>
+        </div>
+        
+    </div>
+
+    <div id="divResult" style="display: none;">
+        <!-- Title -->
+        <div class="w3-row w3-padding-32 myMargin">
+            <h3 style="margin: 30px 0px 0px 0px;"><span data-tag="calc.result.step1">Step 1 </span><span class="w3-xlarge" style="color: #6D7C84;">/ 2</span></h3>
+            <h1 class="w3-xxxlarge" style="line-height: 1; margin: 0px;"><span data-tag="calc.result.title">Here is your estimated</span> <span class="w3-text-red">TDEE</span></h1>
+        </div>
+
+        <!-- Result -->
+        <div class="w3-row w3-padding-32 myMargin">
+            <div class="w3-container w3-auto myHalf">
+                <h4 class="w3-center"><span data-tag="calc.result.fitnessgoal">Your fitness goal is to</span> <span class="w3-text-red" id="txbGoal"></span>.</h4>
+
+                <div class="w3-half w3-padding-small" style="width: 50%;">
+                    <div class="w3-container w3-card w3-center">
+                        <input type="hidden" name="txbTDEE_Value" id="txbTDEE_Value" />
+                        <p data-tag="calc.result.target_intake">Target Daily Caloric Intake</p>
+                        <p class="w3-text-red w3-xxxlarge" style="margin: 0 0 0 0"><span id="txbTDEE_Text">0</span></p>
+                        <p data-tag="calc.result.target_intake.perday">calories per day</p>
+                    </div>
+                </div>
+                <div class="w3-half w3-padding-small" style="width: 50%;">
+                    <div class="w3-container w3-card w3-center">
+                        <p data-tag="calc.result.bmi">Your BMI</p>
+                        <p class="w3-text-green w3-xxxlarge" style="margin: 0 0 0 0;"><span id="txbBMI">0</span></p>
+                        <p>(Normal weight)</p>
+                    </div>
+                </div>
+            </div>
+            <br />
+            <div class="w3-container w3-auto myHalf">
+                <form class="w3-container w3-center">
+                    <h4 data-tag="calc.result.macronutrient">Estimated Macronutrient Ratio</h4>
+                    <div class="w3-row">
+                        <input type="hidden" name="cmbCarb" id="cmbCarb" />
+                        <div class="w3-third w3-padding"><div class="w3-col w3-button w3-border-cal w3-hover-pale-red w3-round" id="btnLowerCarb" data-tag="calc.result.lower_carb">Lower Carb</div></div>
+                        <div class="w3-third w3-padding"><div class="w3-col w3-button w3-border-cal w3-hover-pale-red w3-round" id="btnModerateCarb" data-tag="calc.result.moderate_carb">Moderate Carb</div></div>
+                        <div class="w3-third w3-padding"><div class="w3-col w3-button w3-border-cal w3-hover-pale-red w3-round" id="btnHigherCarb" data-tag="calc.result.higher_carb">Higher Carb</div></div>
+                    </div>
+                    <p data-tag="calc.result.macronutrient.description">
+                        (TBC) Some people may find it difficult to substain with low carb diet and may be some people prefer high carbs as it's easier to obtain.
+                        Select the carb intake which fits your diet everyday.
+                    </p>
+
+                    <div class="w3-row">
+                        <div class="w3-third w3-padding-small" style="width: 33%;">
+                            <div class="w3-card w3-padding">
+                                <span class="w3-text-green" data-tag="calc.result.carbs">Carbs</span> <span class="w3-text-green" id="txbCarb">50%</span><br />
+                                <img src="./images/cal1.png" width="100%" /><br />
+                                <span class="w3-xxlarge w3-text-green" id="txbCarbGram">180g</span>
+                            </div>
+                        </div>
+                        <div class="w3-third w3-padding-small" style="width: 33%;">
+                            <div class="w3-card w3-padding">
+                                <span class="w3-text-blue" data-tag="calc.result.protein">Protein</span> <span class="w3-text-blue" id="txbProtein">30%</span><br />
+                                <img src="./images/cal2.png" width="100%" /><br />
+                                <span class="w3-xxlarge w3-text-blue" id="txbProteinGram">154g</span>
+                            </div>
+                        </div>
+                        <div class="w3-third w3-padding-small" style="width: 33%;">
+                            <div class="w3-card w3-padding">
+                                <span class="w3-text-yellow" data-tag="calc.result.fat">Fat</span> <span class="w3-text-yellow" id="txbFat">20%</span><br />
+                                <img src="./images/cal3.png" width="100%" /><br />
+                                <span class="w3-xxlarge w3-text-yellow" id="txbFatGram">80g</span>
+                            </div>
+                        </div>
+                    </div>
+                        <br /><br /><br />
+                        <div class="w3-center w3-row">
+                            <button class="w3-padding-all w3-btn w3-large w3-red w3-round-xxlarge" onclick="window.location = 'foodlibrary.htm'; return false;" data-tag="calc.result.explore">Step 2: Explore our library</button>
+                            <br /><br />
+                            <a href="javascript: ReCalc();" data-tag="calc.result.recalc">Calculate again</a>
+                        </div>
+</form>
+            </div>
+        </div>
+
+        <div class="w3-row w3-padding-32 w3-left myMargin">
+            <div class="w3-container myMargin">
+                <img src="./images/image40.png" style="width: 200px; float: left;" />
+                <p class="w3-xlarge">
+                    <span data-tag="calc.result.statement">Explore our food library to find out what you can choose next time you’re perusing the menu at your favourite restaurants</span>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="w3-container w3-center w3-padding" style="background-color: #00000005;">
+
+        <div class="w3-row-padding myMargin">
+
+            <div class="w3-third w3-padding">
+                <img class="w3-left" src="images/image-logo.png" width="100px;" />
+            </div>
+            <div class="w3-twothird w3-padding w3-left-align">
+                <div class="w3-row">
+                    <div class="w3-third w3-padding">
+                        <p data-tag="footer.products.title">Scalorie Products</p>
+                        <p style="color: #000b3394;"><a href="calculator.htm" data-tag="footer.products.calculator">TDEE Calculator</a></p>
+                        <p style="color: #000b3394;"><a href="foodlibrary.htm" data-tag="footer.products.foodlibrary">Food Library</a></p>
+                    </div>
+                    <div class="w3-third w3-padding">
+                        <p data-tag="footer.resources.title">Resources</p>
+                        <p style="color: #000b3394;"><a href="https://info.scalorie.co/" target="_blank" data-tag="footer.resources.blog">Blog</a></p>
+                        <p style="color: #000b3394;"><a href="index.htm" data-tag="footer.resources.about">About TDEE</a></p>
+                    </div>
+                    <div class="w3-third w3-padding">
+                        <p><a href="index.htm" data-tag="footer.contact.title">Contact Us</a></p>
+                        <p style="color: #000b3394;"><a href="mailto:hello@scalorie.co">hello@scalorie.co</a></p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div style="position: relative; bottom: 55px;" class="w3-tooltip w3-right">
+            <a class="w3-text-red" href="#myHeader">
+                <span class="w3-xlarge">
+                    <i class="fa fa-chevron-circle-up"></i>
+                </span>
+            </a>
+        </div>
+    </footer>
+
+
+    <script>
+
+        $(function () {
+            $("#btnMale").click(function () {
+                SelectGender("M");
+            });
+            $("#btnFemale").click(function () {
+                SelectGender("F");
+            });
+
+            document.getElementById("sldAge").oninput = function () {
+                $("#txtAge").val(this.value);
+            }
+            document.getElementById("sldHeight").oninput = function () {
+                $("#txtHeight").val(this.value);
+            }
+            document.getElementById("sldWeight").oninput = function () {
+                $("#txtWeight").val(this.value);
+            }
+
+            $("#btnLight").click(function () {
+                SelectActivity("Light");
+            });
+            $("#btnModerate").click(function () {
+                SelectActivity("Moderate");
+            });
+            $("#btnHeavy").click(function () {
+                SelectActivity("Heavy");
+            });
+
+            $("#btnKeepFit").click(function () {
+                SelectObjective("KeepFit");
+            });
+            $("#btnMaintain").click(function () {
+                SelectObjective("Maintain");
+            });
+            $("#btnBuildMuscle").click(function () {
+                SelectObjective("BuildMuscle");
+            });
+
+            SelectGender("M");
+            SelectActivity("Light");
+            SelectObjective("KeepFit");
+
+            $("#btnLowerCarb").click(function () {
+                SelectCrab("low");
+            });
+            $("#btnModerateCarb").click(function () {
+                SelectCrab("moderate");
+            });
+            $("#btnHigherCarb").click(function () {
+                SelectCrab("high");
+            });
+        });
+
+        function SelectGender(gender) {
+            $("#btnMale").removeClass("w3-pale-red").removeClass("w3-text-red");
+            $("#btnFemale").removeClass("w3-pale-red").removeClass("w3-text-red");
+            if (gender == "M") {
+                $("#btnMale").addClass("w3-pale-red").addClass("w3-text-red");
+            } else {
+                $("#btnFemale").addClass("w3-pale-red").addClass("w3-text-red");
+            }
+            $("#cmbGender").val(gender);
+        }
+
+        function SelectActivity(level) {
+            $("#btnLight").removeClass("w3-pale-red").removeClass("w3-text-red");
+            $("#btnModerate").removeClass("w3-pale-red").removeClass("w3-text-red");
+            $("#btnHeavy").removeClass("w3-pale-red").removeClass("w3-text-red");
+            if (level == "Light") {
+                $("#btnLight").addClass("w3-pale-red").addClass("w3-text-red");
+                $("#cmbActivity").val(1.375);
+            }
+            if (level == "Moderate") {
+                $("#btnModerate").addClass("w3-pale-red").addClass("w3-text-red");
+                $("#cmbActivity").val(1.55);
+            }
+            if (level == "Heavy") {
+                $("#btnHeavy").addClass("w3-pale-red").addClass("w3-text-red");
+                $("#cmbActivity").val(1.9);
+            }
+        }
+
+        function SelectObjective(objective) {
+            $("#btnKeepFit").removeClass("w3-pale-red").removeClass("w3-text-red");
+            $("#btnMaintain").removeClass("w3-pale-red").removeClass("w3-text-red");
+            $("#btnBuildMuscle").removeClass("w3-pale-red").removeClass("w3-text-red");
+            if (objective == "KeepFit") {
+                $("#btnKeepFit").addClass("w3-pale-red").addClass("w3-text-red");
+            }
+            if (objective == "Maintain") {
+                $("#btnMaintain").addClass("w3-pale-red").addClass("w3-text-red");
+            }
+            if (objective == "BuildMuscle") {
+                $("#btnBuildMuscle").addClass("w3-pale-red").addClass("w3-text-red");
+            }
+            $("#cmbObjective").val(objective);
+        }
+
+        function SelectCrab(crab) {
+            $("#btnLowerCarb").removeClass("w3-pale-red").removeClass("w3-text-red");
+            $("#btnModerateCarb").removeClass("w3-pale-red").removeClass("w3-text-red");
+            $("#btnHigherCarb").removeClass("w3-pale-red").removeClass("w3-text-red");
+            if (crab == "low") {
+                $("#btnLowerCarb").addClass("w3-pale-red").addClass("w3-text-red");
+            }
+            if (crab == "moderate") {
+                $("#btnModerateCarb").addClass("w3-pale-red").addClass("w3-text-red");
+            }
+            if (crab == "high") {
+                $("#btnHigherCarb").addClass("w3-pale-red").addClass("w3-text-red");
+            }
+            $("#cmbCarb").val(crab);
+
+            // Refresh Figures
+            CarbPercent = 0;
+            ProteinPercent = 0;
+            FatPercent = 0;
+            if (crab == "low") {
+                CarbPercent = 0.5;
+                ProteinPercent = 0.31;
+                FatPercent = 0.49;
+                $("#txbCarb").html("20%");
+                $("#txbProtein").html("31%");
+                $("#txbFat").html("49%");
+            }
+            if (crab == "moderate") {
+                CarbPercent = 0.3;
+                ProteinPercent = 0.31;
+                FatPercent = 0.39;
+                $("#txbCarb").html("30%");
+                $("#txbProtein").html("31%");
+                $("#txbFat").html("39%");
+            }
+            if (crab == "high") {
+                CarbPercent = 0.35;
+                ProteinPercent = 0.31;
+                FatPercent = 0.34;
+                $("#txbCarb").html("35%");
+                $("#txbProtein").html("31%");
+                $("#txbFat").html("34%");
+            }
+
+            weight = $("#txtWeight").val();
+            TDEE = $("#txbTDEE_Value").val();
+            Protein_Gram = weight * 1.5;
+            Protein_Cal = Protein_Gram * 4;
+            Carbs_Cal = TDEE * CarbPercent;
+            Carbs_Gram = Carbs_Cal / 4;
+            Fat_Cal = TDEE - Protein_Cal - Carbs_Cal;
+            Fat_Gram = Fat_Cal / 9;
+
+            Carbs_GramText = Math.round(Carbs_Gram * 1) / 1;
+            Protein_GramText = Math.round(Protein_Gram * 1) / 1;
+            Fat_GramText = Math.round(Fat_Gram * 1) / 1;
+            $("#txbCarbGram").html(Carbs_GramText + "g");
+            $("#txbProteinGram").html(Protein_GramText + "g");
+            $("#txbFatGram").html(Fat_GramText + "g");
+        }
+        
+        function TDEE_Calc() {
+            //Men: 10 x weight (kg) + 6.25 x height (cm) – 5 x age (years) + 5
+            //Women: 10 x weight (kg) + 6.25 x height (cm) – 5 x age (years) – 161
+            //Total Daily Energy Expenditure (TDEE) = BMR X Activity level
+
+            gender = $("#cmbGender").val();
+            age = $("#txtAge").val();
+            height = $("#txtHeight").val();
+            weight = $("#txtWeight").val();
+            activity = $("#cmbActivity").val();
+            objective = $("#cmbObjective").val();
+
+            factor = 0;
+            if (gender == "M") factor = 5;
+            else factor = -161;
+
+            TDEE = (10 * weight + 6.25 * height - 5 * age + factor) * activity;
+
+            if (objective == "KeepFit") { TDEE = TDEE - 500; }
+            if (objective == "BuildMuscle") { TDEE = TDEE + 500; }
+
+            TDEE_Text = Math.round(TDEE * 1) / 1;
+            BMI = weight / ((height / 100) * (height / 100));
+            BMI_Text = Math.round(BMI * 10) / 10;
+            $("#txbGoal").html(objective);
+            $("#txbTDEE_Value").val(TDEE);
+            $("#txbTDEE_Text").html(TDEE_Text);
+            $("#txbBMI").html(BMI_Text);
+
+            SelectCrab("moderate");
+
+            $("#divInput").hide();
+            $("#divResult").show();
+            $("#divResult").get(0).scrollIntoView();
+        }
+        function ReCalc() {
+            $("#divInput").show();
+            $("#divResult").hide();
+            $("#divInput").get(0).scrollIntoView();
+        }
+    </script>
+
+</body>
+</html>
