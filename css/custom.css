@@ -1,0 +1,240 @@
+﻿@font-face {
+    font-family: "AauxNext";
+    src: url("font/aaux-next-cufonfonts/aauxnextbdwebfont.otf");
+}
+html, body {
+    font-family: AauxNext,Verdana,sans-serif;
+    line-height: 1.1;
+}
+html{
+    min-width: 992px;
+    overflow-x: scroll;
+}
+@media (max-width:600px) {
+    html{
+        min-width: 500px;
+        overflow-x: scroll;
+    }
+}
+h1, h2, h3, h4, h5, h6 {
+    font-family: AauxNext,Verdana,sans-serif;
+}
+a {
+    text-decoration: none;
+}
+.text-overflow {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.w3-border-cal {
+    border: 0.5px solid #ccc !important;
+    border-color: #6D7C84 !important;
+}
+.w3-padding-all {
+    padding: 16px !important;
+}
+
+.indexHeader {
+    background-image: url('../images/image1.png');
+    background-repeat: no-repeat;
+    background-position: top right;
+    background-size: 60%;
+}
+#HowScalorieWorks1 {
+    background-image: url('../images/how_scalorie_works_1.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    min-height: 400px;
+}
+    #HowScalorieWorks1 div {
+        position: relative;
+        top: 50px;
+        left: 50px;
+        width: 40%;
+    }
+#HowScalorieWorks2 {
+    background-image: url('../images/how_scalorie_works_2.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    min-height: 400px;
+}
+    #HowScalorieWorks2 div {
+        position: relative;
+        top: 50px;
+        left: 60%;
+        width: 40%;
+    }
+#HowScalorieWorks3 {
+    background-image: url('../images/how_scalorie_works_3.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    min-height: 400px;
+}
+    #HowScalorieWorks3 div {
+        position: relative;
+        top: 50px;
+        left: 50px;
+        width: 40%;
+    }
+#HowScalorieWorks4 {
+    background-image: url('../images/how_scalorie_works_4.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    min-height: 400px;
+}
+    #HowScalorieWorks4 div {
+        position: relative;
+        top: 50px;
+        left: 60%;
+        width: 40%;
+    }
+.foodLibraryHeader {
+    background-image: url('../images/image3.png');
+    background-repeat: no-repeat;
+    background-position: top right;
+    background-size: 40%;
+    min-height: 420px;
+}
+.myMargin {
+    padding-left: 50px;
+    padding-right: 50px;
+}
+.myHalf {
+    width: 50%;
+}
+@media (max-width:600px) {
+    .w3-xxxlarge {
+        font-size: 30px !important
+    }
+    .myMargin {
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+    .myHalf {
+        width: 100%;
+    }
+    #HowScalorieWorks1 {
+        background-image: url('../images/how_scalorie_works_1m.png');
+        background-repeat: no-repeat;
+        background-size: cover;
+        width: 100%;
+        min-height: 400px;
+    }
+        #HowScalorieWorks1 div {
+            position: relative;
+            top: 50px;
+            left: 50px;
+            width: 90%;
+        }
+    #HowScalorieWorks2 {
+        background-image: url('../images/how_scalorie_works_2m.png');
+        background-repeat: no-repeat;
+        background-size: cover;
+        width: 100%;
+        min-height: 400px;
+    }
+        #HowScalorieWorks2 div {
+            position: relative;
+            top: 50px;
+            left: 50px;
+            width: 90%;
+        }
+    #HowScalorieWorks3 {
+        background-image: url('../images/how_scalorie_works_3m.png');
+        background-repeat: no-repeat;
+        background-size: cover;
+        width: 100%;
+        min-height: 400px;
+    }
+        #HowScalorieWorks3 div {
+            position: relative;
+            top: 50px;
+            left: 50px;
+            width: 90%;
+        }
+    #HowScalorieWorks4 {
+        background-image: url('../images/how_scalorie_works_4m.png');
+        background-repeat: no-repeat;
+        background-size: cover;
+        width: 100%;
+        min-height: 400px;
+    }
+        #HowScalorieWorks4 div {
+            position: relative;
+            top: 50px;
+            left: 50px;
+            width: 90%;
+        }
+}
+
+/************* loader ************/
+.loader {
+    border: 16px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 16px solid #3498db;
+    width: 120px;
+    height: 120px;
+    -webkit-animation: spin 2s linear infinite; /* Safari */
+    animation: spin 2s linear infinite;
+    left: 50%;
+    position: relative;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+/* Safari */
+@-webkit-keyframes spin {
+    0% {
+        -webkit-transform: rotate(0deg);
+    }
+
+    100% {
+        -webkit-transform: rotate(360deg);
+    }
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/************* slider ************/
+.slider {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 10px;
+    border-radius: 5px;
+    background: #d3d3d3;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+}
+
+    .slider::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 25px;
+        height: 25px;
+        border-radius: 50%;
+        background: #ff0000;
+        cursor: pointer;
+    }
+
+    .slider::-moz-range-thumb {
+        width: 25px;
+        height: 25px;
+        border-radius: 50%;
+        background: #ff0000;
+        cursor: pointer;
+    }
