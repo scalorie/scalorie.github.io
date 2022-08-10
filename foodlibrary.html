@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SCALORIE - Nutrition Library</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/w3.css">
+    <link rel="stylesheet" href="css/custom.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-red.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css">
+    <script type="text/javascript" src="js/common.js"></script>
+    <script type="text/javascript" src="js/jquery-3.6.0.min.js"></script>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-X0JENR67T6"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-X0JENR67T6');
+    </script>
+</head>
+<body onload="loadLangage()">
+
+    <!-- Side Navigation -->
+    <div class="w3-top w3-white">
+        <div class="w3-bar w3-left-align w3-large">
+            <a class="w3-bar-item w3-hide-medium w3-hide-large w3-right w3-padding-large w3-large w3-text-red" href="javascript:void(0);" onclick="navShowHide()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
+            <a href="index.htm"><img src="images/image-logo.png" class="w3-padding" style="height: 50px;" /></a>
+            <a href="javascript:setLanguage('tc');" class="w3-bar-item w3-right w3-hide-small w3-padding-large" style="padding-left: 10px!important;" data-tag="menu.tc">中</a>
+            <span class="w3-bar-item w3-right w3-hide-small w3-padding-large" style="padding-left: 0px !important; padding-right: 0px !important; "> | </span>
+            <a href="javascript:setLanguage('en')" class="w3-bar-item w3-right w3-hide-small w3-padding-large" style="padding-right: 10px!important;" data-tag="menu.en">EN</a>
+            <a href="partnership.htm" class="w3-bar-item w3-right w3-hide-small w3-padding-large" data-tag="menu.partnership">Partnership</a>
+            <a href="https://info.scalorie.co/" target="_blank" class="w3-bar-item w3-right w3-hide-small w3-padding-large" data-tag="menu.blog">Blog</a>
+            <a href="foodlibrary.htm" class="w3-bar-item w3-right w3-hide-small w3-padding-large" data-tag="menu.nutrition_facts">Food Library</a>
+            <a href="calculator.htm" class="w3-bar-item w3-right w3-hide-small w3-padding-large" data-tag="menu.tdee_calculator">TDEE Calculator</a>
+            <a href="index.htm" class="w3-bar-item w3-right w3-hide-small w3-padding-large" data-tag="menu.why">Why Scalorie</a>
+        </div>
+
+        <!-- Navbar on small screens -->
+        <div id="navDemo" class="w3-bar-block w3-white w3-hide w3-hide-large w3-hide-medium w3-large">
+            <a href="index.htm" class="w3-bar-item w3-button w3-padding-large" data-tag="menu.why">Why Scalorie</a>
+            <a href="calculator.htm" class="w3-bar-item w3-button w3-padding-large" data-tag="menu.tdee_calculator">TDEE Calculator</a>
+            <a href="foodlibrary.htm" class="w3-bar-item w3-button w3-padding-large" data-tag="menu.nutrition_facts">Food Library</a>
+            <a href="https://info.scalorie.co/" target="_blank" class="w3-bar-item w3-button w3-padding-large" data-tag="menu.blog">Blog</a>
+            <a href="partnership.htm" class="w3-bar-item w3-button w3-padding-large" data-tag="menu.partnership">Partnership</a>
+            <a href="javascript:setLanguage('en');" class="w3-button w3-padding-large" style="padding-right: 10px!important;" data-tag="menu.en">EN</a>
+            <span class="w3-button w3-padding-large" style="padding-left: 0px !important; padding-right: 0px !important; "> | </span>
+            <a href="javascript:setLanguage('tc');" class="w3-button w3-padding-large" style="padding-left: 10px!important;" data-tag="menu.tc">中</a>
+            <br />
+            <a href="https://instagram.com/scalorie.food?utm_medium=copy_link" target="_blank" class="w3-button w3-padding-large" style="padding-right: 10px!important;"><i class="fa fa-instagram w3-hover-opacity"></i></a>
+            <a href="https://www.facebook.com/scalorie.food" target="_blank" class="w3-button w3-padding-large" style="padding-left: 10px!important;"><i class="fa fa-facebook-official w3-hover-opacity"></i></a>
+        </div>
+    </div>
+
+    <br /><br /><br />
+    <!-- Header -->
+    <header class="w3-container w3-padding foodLibraryHeader" id="myHeader">
+
+        <div class="w3-row">
+            <div class="w3-threequarter w3-container w3-padding-large">
+                <h3 style="margin: 30px 0px 0px 0px;"><span data-tag="foodlibrary.header.step1">Step 2 </span><span class="w3-xlarge" style="color: #6D7C84;">/ 2</span></h3>
+                <h1 class="w3-xxxlarge" style="line-height: 1; margin: 0px;" data-tag="foodlibrary.header.title">Fitness starts with food.</h1>
+                <p data-tag="foodlibrary.header.description">Track calories, break down ingredients, and get excited about what's on the menu with Scalorie.</p>
+                <form action="https://formsubmit.co/hello@scalorie.co" method="POST"
+                      class="w3-container" style="float: none; margin: 0 auto;">
+                    <input type="hidden" name="_replyto" value="hello@scalorie.co" />
+                    <input type="hidden" name="_subject" value="Scalorie - Food Library - New Subscription" />
+                    <input type="hidden" name="_next" value="https://scalorie.changing.hk/foodlibrary.htm" />
+                    <input class="" style="width: 60%;" type="email" name="email" placeholder="Enter your email" required />
+                    <input type="submit" class="w3-btn w3-text-white w3-red w3-round-large" value="Notify Me" />
+                </form>
+            </div>
+            <div class="w3-quarter w3-container w3-center">
+            </div>
+        </div>
+    </header>
+
+    <!-- Here to help you -->
+    <div class="w3-container w3-center myMargin">
+        <div class="w3-container w3-center w3-padding-top-64">
+            <div style="width: 100%; height: 20px; border-bottom: 2px solid #80808047; text-align: center">
+                <span style="font-size: xx-large; background-color: #FFFFFF; padding: 0 10px;" data-tag="foodlibrary.help.title">The Tool For Your Goal</span>
+            </div>
+            <p class="w3-padding-32" data-tag="foodlibrary.help.description">Trying to lose weight, tone up, lower your BMI, or invest in your overall health? We give you the right features to hit your goals.</p>
+        </div>
+
+        <div class="w3-row-padding w3-center">
+            <div class="w3-third w3-padding">
+                <span class="w3-row w3-xxlarge" data-tag="foodlibrary.help.section1.title">Recommeded meals to hit your goal</span>
+                <img src="images/partner1.png">
+                <p class="w3-row" data-tag="foodlibrary.help.section1.description">Know your daily intake and arrange meal within your</p>
+            </div>
+            <div class="w3-third w3-padding">
+                <span class="w3-row w3-xxlarge" data-tag="foodlibrary.help.section2.title"> Simple measurement method without scale.</span>
+                <img src="images/partner2.png">
+                <p class="w3-row" data-tag="foodlibrary.help.section2.description">Scalorie contacts you to guide you how to provide your food info</p>
+            </div>
+            <div class="w3-third w3-padding">
+                <span class="w3-row w3-xxlarge" data-tag="foodlibrary.help.section3.title">You are still on track if you are dining out</span>
+                <img src="images/partner3.png">
+                <p class="w3-row" data-tag="foodlibrary.help.section3.description">Our team will complete the rest and promote your dish!</p>
+            </div>
+        </div>
+        <div class="w3-center w3-row">
+            <button class="w3-padding-all w3-btn w3-large w3-red w3-round-xxlarge" style="width: 250px;" onclick="window.location = 'partnership.htm'; return false;" data-tag="foodlibrary.help.start">Start your journey</button>
+        </div>
+        <br />
+    </div>
+
+    <div class="w3-row">
+        <div class="w3-half w3-center" style="position: relative;">
+            <a href="snacks.htm"><img src="images/Library_Snack.png" style="width: 90%;" /></a>
+            <div class="w3-xxxlarge w3-text-white" style="position: absolute; bottom: 50px; left: 60px;">Snacks</div>
+        </div>
+        <div class="w3-half w3-center" style="position: relative;">
+            <a href="#"><img src="images/Library_Dining.png" style="width: 90%;" /></a>
+            <div class="w3-xxxlarge w3-text-white" style="position: absolute; bottom: 50px; left: 60px;">Dining Food</div>
+        </div>
+    </div>
+
+    <br /><br /><br /><br /><br /><br /><br /><br />
+
+    <!-- Footer -->
+    <footer class="w3-container w3-center w3-padding" style="background-color: #00000005;">
+
+        <div class="w3-row-padding myMargin">
+
+            <div class="w3-third w3-padding">
+                <img class="w3-left" src="images/image-logo.png" width="100px;" />
+            </div>
+            <div class="w3-twothird w3-padding w3-left-align">
+                <div class="w3-row">
+                    <div class="w3-third w3-padding">
+                        <p data-tag="footer.products.title">Scalorie Products</p>
+                        <p style="color: #000b3394;"><a href="calculator.htm" data-tag="footer.products.calculator">TDEE Calculator</a></p>
+                        <p style="color: #000b3394;"><a href="foodlibrary.htm" data-tag="footer.products.foodlibrary">Food Library</a></p>
+                    </div>
+                    <div class="w3-third w3-padding">
+                        <p data-tag="footer.resources.title">Resources</p>
+                        <p style="color: #000b3394;"><a href="https://info.scalorie.co/" target="_blank" data-tag="footer.resources.blog">Blog</a></p>
+                        <p style="color: #000b3394;"><a href="index.htm" data-tag="footer.resources.about">About TDEE</a></p>
+                    </div>
+                    <div class="w3-third w3-padding">
+                        <p><a href="index.htm" data-tag="footer.contact.title">Contact Us</a></p>
+                        <p style="color: #000b3394;"><a href="mailto:hello@scalorie.co">hello@scalorie.co</a></p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div style="position: relative; bottom: 55px;" class="w3-tooltip w3-right">
+            <a class="w3-text-red" href="#myHeader">
+                <span class="w3-xlarge">
+                    <i class="fa fa-chevron-circle-up"></i>
+                </span>
+            </a>
+        </div>
+    </footer>
+
+
+
+</body>
+</html>
